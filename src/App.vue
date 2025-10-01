@@ -9,13 +9,19 @@
           <router-link to="/dashboard" v-if="authStore.userRole === 'admin'">
             Dashboard
           </router-link>
-          
+
           <div class="auth-section">
             <span v-if="authStore.isAuthenticated" class="user-info">
               {{ authStore.user }}
-              <span v-if="authStore.userRole === 'admin'" class="badge">Admin</span>
+              <span v-if="authStore.userRole === 'admin'" class="badge"
+                >Admin</span
+              >
             </span>
-            <router-link v-if="!authStore.isAuthenticated" to="/login" class="btn-login">
+            <router-link
+              v-if="!authStore.isAuthenticated"
+              to="/login"
+              class="btn-login"
+            >
               Login
             </router-link>
             <button v-else @click="handleLogout" class="btn-logout">
@@ -38,16 +44,16 @@
 </template>
 
 <script setup>
-import { useAuthStore } from './stores/auth'
-import { useRouter } from 'vue-router'
+import { useAuthStore } from "./stores/auth";
+import { useRouter } from "vue-router";
 
-const authStore = useAuthStore()
-const router = useRouter()
+const authStore = useAuthStore();
+const router = useRouter();
 
 const handleLogout = () => {
-  authStore.logout()
-  router.push('/')
-}
+  authStore.logout();
+  router.push("/");
+};
 </script>
 
 <style scoped>
@@ -55,13 +61,14 @@ const handleLogout = () => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* background-color: #ff6b6b; */
 }
 
 header {
   background: #42b983;
   color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-nav {
@@ -136,7 +143,7 @@ header {
 .btn-login:hover,
 .btn-logout:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 main {
