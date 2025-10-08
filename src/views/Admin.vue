@@ -1,13 +1,5 @@
 <template>
-  <div class="post-detail" v-if="post">
-    <h2>{{ post.title }}</h2>
-    <p class="author">Por: {{ post.author }}</p>
-    <div class="content">{{ post.content }}</div>
-    <button @click="$router.back()">Volver</button>
-  </div>
-  <div v-else>
-    <p>Post no encontrado</p>
-  </div>
+  <div><p>Esto es para ojos de Admin</p></div>
 </template>
 
 <script setup>
@@ -44,12 +36,6 @@ const postsDB = {
     title: "Vue Router 4",
     author: "Pedro",
     content: "Contenido completo del post 3...",
-  },
-  4: {
-    id: 4,
-    title: "Prueba",
-    author: "Usuario Normal",
-    content: "Contenido completo del post 4...",
   },
 };
 
