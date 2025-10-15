@@ -1,67 +1,63 @@
 <template>
   <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    
+
     <form @submit.prevent="handleLogin">
       <div>
-        <input 
-          v-model="email" 
-          type="email" 
-          placeholder="Email"
-          required
-        />
+        <input v-model="email" type="email" placeholder="Email" required />
       </div>
-      
+
       <div>
-        <input 
-          v-model="password" 
-          type="password" 
+        <input
+          v-model="password"
+          type="password"
           placeholder="Contraseña"
           required
         />
       </div>
-      
+
       <button type="submit" :disabled="isLoading">
-        {{ isLoading ? 'Cargando...' : 'Iniciar Sesión' }}
+        {{ isLoading ? "Cargando..." : "Iniciar Sesión" }}
       </button>
     </form>
 
     <p v-if="error" class="error">{{ error }}</p>
-    
+
     <p>
-      ¿No tienes cuenta? 
-      <router-link to="/signup">Registrarse</router-link>
+      ¿No tienes cuenta?
+      <!-- <router-link to="/reset-password">Reset Password</router-link> -->
+      <!-- <router-link to="/signup">Registrarse</router-link> -->
     </p>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuth } from '@/composables/useAuth'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuth } from "@/composables/useAuth";
 
-const router = useRouter()
-const { signIn } = useAuth()
+const router = useRouter();
+const { signIn } = useAuth();
 
-const email = ref('')
-const password = ref('')
-const error = ref(null)
-const isLoading = ref(false)
+const email = ref("");
+const password = ref("");
+const error = ref(null);
+const isLoading = ref(false);
 
 const handleLogin = async () => {
-  error.value = null
-  isLoading.value = true
-  
-  const { data, error: loginError } = await signIn(email.value, password.value)
-  
-  isLoading.value = false
-  
+  error.value = null;
+  isLoading.value = true;
+
+  const { data, error: loginError } = await signIn(email.value, password.value);
+
+  isLoading.value = false;
+
   if (loginError) {
-    error.value = loginError.message
+    error.value = loginError.message;
   } else {
-    router.push('/dashboard')
+    router.push("/dashboard");
   }
-}
+};
 </script>
 
 <style scoped>
@@ -82,7 +78,7 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 4px;

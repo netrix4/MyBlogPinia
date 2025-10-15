@@ -25,6 +25,7 @@
 
     <p>
       ¿No tienes cuenta?
+      <router-link to="/forgot-password">Reiniciar Contrasena</router-link>
       <router-link to="/signup">Registrarse</router-link>
     </p>
   </div>

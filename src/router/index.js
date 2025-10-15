@@ -69,6 +69,8 @@
 
 import { createRouter, createWebHistory } from "vue-router";
 import { supabase } from "@/supabase";
+import ForgotPassword from "../views/ForgotPassword.vue";
+import ResetPassword from "../views/ResetPassword.vue";
 
 const routes = [
   {
@@ -102,6 +104,16 @@ const routes = [
       requiresAuth: true,
       requiresRole: ["admin"],
     },
+  },
+  {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPassword,
+  },
+  {
+    path: "/reset-password",
+    name: "ResetPassword",
+    component: ResetPassword,
   },
 ];
 
